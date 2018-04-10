@@ -36,6 +36,7 @@ else {
                 $newName = date('Y-m-d',time())."_".rand(131197,26081997)."_".$file['name'][$i];
                 move_uploaded_file($file['tmp_name'][$i],'Files/'.$newName);
             }
+            echo "Success !<br>";
         }
     }
 }
