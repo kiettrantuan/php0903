@@ -2,19 +2,19 @@
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-$file = $_FILES['image']; // để nhận file upload ta phải để $_FILES
+$file = $_FILES['image']; // Để nhận file upload ta phải để $_FILES
 
 echo "<pre>";
 print_r($file);
 echo "</pre>";
 
-// check files error; validate filesize<=1MB,filetype=image,filename
+// Biến đếm
 $count = count($file['name']);  // Đếm số lượng file upload
 $errorCount = 0;                // Đếm lỗi
 $errorSize = 0;                 // Đếm số file quá size
 $errorExt = 0;                  // Đếm số file sai định dạng
 $arrExt = ['png','jpg','jpeg','gif'];
-
+// Đếm lỗi
 for($i = 0; $i < $count; $i++){
     if($file['error'][$i] != 0) $errorCount++;
     if($file['size'][$i] > 1024*1024) $errorSize++;
@@ -26,6 +26,7 @@ for($i = 0; $i < $count; $i++){
 // foreach($file['size'] as $size) if($size > 1024*1024) $errorSize++;
 // foreach($file['name'] as $name) if(!in_array(strtolower(pathinfo($name,PATHINFO_EXTENSION)),$arrExt)) $errorExt++;
 
+// check files error -> check filesize<=1MB -> check filetype=image -> change filename -> move files to folder
 if($errorCount != 0) echo "Error Uploading !<br>";
 else {
     if($errorSize != 0) echo "File Size Over 1 Megabytes !<br>";
