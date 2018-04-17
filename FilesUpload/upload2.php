@@ -14,14 +14,19 @@ foreach($file['error'] as $error){
         die;
     }
 }
+
+session_start();
+
 foreach($file['size'] as $size){
     if($size > 1024*1024){
-        echo "File too large !<br>";
-        // header("Refresh:5;url=index2.php"); // Đợi 5s trước khi refresh; quay về file index2.php
-        header("location:index2.php"); // Quay về file index2.php
+        // echo "File too large !<br>";
         // die;
+        // header("Refresh:5;url=index2.php"); // Đợi 5s trước khi refresh; quay về file index2.php
+        $_SESSION['message'] = "File too large !<br>";
+        header("location:index2.php"); // Quay về file index2.php
     }
 }
+die;
 $arrExt = ['png','jpg','jpeg','gif'];
 foreach($file['name'] as $name){
     if(!in_array(strtolower(pathinfo($name,PATHINFO_EXTENSION)),$arrExt)){
