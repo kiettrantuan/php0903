@@ -28,7 +28,18 @@ echo "<pre>";
 print_r($arrOut);
 echo "</pre>";
 
-// BT2: Cho dãy số tăng dần hoặc giảm dần {1,5,7,8,9,10..}; cho biết số user vừa lấy ra là số bao nhiêu/
-
+// BT2: Cho dãy số ngẫu nhiên tăng dần hoặc giảm dần {1,5,7,8,9,10..}; cho biết số user vừa lấy ra là số bao nhiêu/
+$arr2 = array(5,7,8,9,10,11,12,13,14,15);
+$arrMaxPos = count($arr2)-1;            // Max position in arr2
+$uChoice = $arr2[rand(0,$arrMaxPos)];   // User's choice
+echo $uChoice,"<br>";
+// Binary Search
+$aChoicePos = round($arrMaxPos/2);      // Admin's choice position
+echo $aChoicePos,"<br>";
+while($arr2[$aChoicePos] != $uChoice){
+    if($arr2[$aChoicePos] < $uChoice) $aChoicePos++;
+    else if($arr2[$aChoicePos] > $uChoice) $aChoicePos--;
+}
+echo $arr2[$aChoicePos];
 
 ?>
